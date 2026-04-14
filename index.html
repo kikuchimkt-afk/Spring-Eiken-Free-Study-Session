@@ -233,6 +233,10 @@
                     <div class="schedule__label">📱 持ち物</div>
                     <div class="schedule__value">スマートフォン or タブレット</div>
                 </div>
+                <div class="schedule__row schedule__row--highlight">
+                    <div class="schedule__label">👤 定員</div>
+                    <div class="schedule__value"><span class="schedule__capacity">各回 6名</span>（少人数制）</div>
+                </div>
             </div>
 
             <!-- Calendar visual - Full calendar -->
@@ -242,7 +246,9 @@
                 <!-- Legend -->
                 <div class="cal-legend">
                     <span class="cal-legend__item"><span class="cal-legend__dot cal-legend__dot--session"></span>勉強会</span>
-                    <span class="cal-legend__item"><span class="cal-legend__dot cal-legend__dot--exam-venue"></span>準会場受験（当校）</span>
+                    <span class="cal-legend__item"><span class="cal-legend__dot cal-legend__dot--exam-venue"></span>当校受験</span>
+                    <span class="cal-legend__item"><span class="cal-legend__dot cal-legend__dot--exam-other"></span>他準会場</span>
+                    <span class="cal-legend__item"><span class="cal-legend__dot cal-legend__dot--exam-main"></span>本会場</span>
                 </div>
 
                 <div class="schedule__months">
@@ -345,28 +351,36 @@
                             <div class="cal-day cal-day--sat cal-day--session">16
                                 <span class="cal-label">勉強会</span>
                             </div>
-                            <!-- Row 4 -->
+                            <!-- Row 4: 5/17-23 -->
                             <div class="cal-day cal-day--sun">17</div>
                             <div class="cal-day">18</div>
                             <div class="cal-day">19</div>
                             <div class="cal-day">20</div>
                             <div class="cal-day">21</div>
-                            <div class="cal-day">22</div>
-                            <div class="cal-day cal-day--sat cal-day--session">23
-                                <span class="cal-label">勉強会</span>
+                            <div class="cal-day cal-day--exam-other">22
+                                <span class="cal-label cal-label--exam-other">A日程</span>
                             </div>
-                            <!-- Row 5 -->
-                            <div class="cal-day cal-day--sun">24</div>
+                            <div class="cal-day cal-day--sat cal-day--exam-other">23
+                                <span class="cal-label cal-label--exam-other">B日程</span>
+                            </div>
+                            <!-- Row 5: 5/24-30 EXAM WEEK -->
+                            <div class="cal-day cal-day--sun cal-day--exam-other">24
+                                <span class="cal-label cal-label--exam-other">C日程</span>
+                            </div>
                             <div class="cal-day">25</div>
                             <div class="cal-day">26</div>
                             <div class="cal-day">27</div>
                             <div class="cal-day">28</div>
-                            <div class="cal-day">29</div>
-                            <div class="cal-day cal-day--sat cal-day--exam-venue">30
-                                <span class="cal-label cal-label--exam">🏢 準会場受験</span>
+                            <div class="cal-day cal-day--exam-other">29
+                                <span class="cal-label cal-label--exam-other">D日程</span>
                             </div>
-                            <!-- Row 6 -->
-                            <div class="cal-day cal-day--sun">31</div>
+                            <div class="cal-day cal-day--sat cal-day--exam-venue">30
+                                <span class="cal-label cal-label--exam">★ E日程</span>
+                            </div>
+                            <!-- Row 6: 5/31 -->
+                            <div class="cal-day cal-day--sun cal-day--exam-main">31
+                                <span class="cal-label cal-label--exam-main">本会場/F</span>
+                            </div>
                             <div class="cal-day cal-day--empty"></div>
                             <div class="cal-day cal-day--empty"></div>
                             <div class="cal-day cal-day--empty"></div>
@@ -377,10 +391,32 @@
                     </div>
                 </div>
 
-                <div class="schedule__exam-info">
-                    <div class="schedule__exam-item">
-                        <span class="schedule__exam-date">📝 5/30（土）</span>
-                        <span class="schedule__exam-type">当校 準会場受験日（E日程）</span>
+                <!-- Exam schedule table -->
+                <div class="exam-table">
+                    <div class="exam-table__title">📄 英検一次試験日程</div>
+                    <div class="exam-table__row">
+                        <span class="exam-table__date">5/22（金）</span>
+                        <span class="exam-table__label">準会場A日程</span>
+                    </div>
+                    <div class="exam-table__row">
+                        <span class="exam-table__date">5/23（土）</span>
+                        <span class="exam-table__label">準会場B日程</span>
+                    </div>
+                    <div class="exam-table__row">
+                        <span class="exam-table__date">5/24（日）</span>
+                        <span class="exam-table__label">準会場C日程</span>
+                    </div>
+                    <div class="exam-table__row">
+                        <span class="exam-table__date">5/29（金）</span>
+                        <span class="exam-table__label">準会場D日程</span>
+                    </div>
+                    <div class="exam-table__row exam-table__row--highlight">
+                        <span class="exam-table__date">5/30（土）</span>
+                        <span class="exam-table__label exam-table__label--venue">★ 準会場E日程（当校）</span>
+                    </div>
+                    <div class="exam-table__row">
+                        <span class="exam-table__date">5/31（日）</span>
+                        <span class="exam-table__label">本会場 / 準会場F日程</span>
                     </div>
                 </div>
 

@@ -804,6 +804,13 @@ a {
     border-radius: var(--radius-full);
 }
 
+.schedule__capacity {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--color-accent);
+}
+
 /* Calendar - Full Grid */
 .schedule__calendar {
     text-align: center;
@@ -1011,47 +1018,102 @@ a {
 }
 
 .cal-label--exam {
+    color: var(--color-accent-warm);
+    font-size: 0.38rem;
+}
+
+.cal-label--exam-other {
     color: var(--color-accent);
     font-size: 0.38rem;
 }
 
-/* Exam info bar */
-.schedule__exam-info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
+.cal-label--exam-main {
+    color: #ff4444;
+    font-size: 0.38rem;
+}
+
+/* Exam - other venues (pink) */
+.cal-day--exam-other {
+    background: rgba(255, 107, 157, 0.12);
+    border: 1.5px solid rgba(255, 107, 157, 0.35);
+    border-radius: var(--radius-sm);
+    color: var(--color-accent);
+    font-weight: 700;
+}
+
+/* Exam - main venue (red) */
+.cal-day--exam-main {
+    background: rgba(255, 68, 68, 0.15);
+    border: 1.5px solid rgba(255, 68, 68, 0.4);
+    border-radius: var(--radius-sm);
+    color: #ff6666;
+    font-weight: 800;
+}
+
+/* Legend dots - new */
+.cal-legend__dot--exam-other {
+    background: var(--color-accent);
+    box-shadow: 0 0 6px rgba(255, 107, 157, 0.6);
+}
+
+.cal-legend__dot--exam-main {
+    background: #ff4444;
+    box-shadow: 0 0 6px rgba(255, 68, 68, 0.6);
+}
+
+/* ===== Exam Schedule Table ===== */
+.exam-table {
     margin-top: 24px;
-    padding: 16px;
-    background: var(--gradient-card);
+    background: var(--color-bg-card);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-    flex-wrap: wrap;
+    overflow: hidden;
 }
 
-.schedule__exam-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-}
-
-.schedule__exam-date {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    font-weight: 800;
+.exam-table__title {
+    padding: 14px 20px;
+    font-size: 0.9rem;
+    font-weight: 700;
     color: var(--color-text);
+    background: rgba(124, 106, 255, 0.06);
+    border-bottom: 1px solid var(--color-border);
+    text-align: center;
 }
 
-.schedule__exam-type {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--color-accent);
+.exam-table__row {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--color-border);
+    gap: 12px;
 }
 
-.schedule__exam-divider {
-    color: var(--color-text-dim);
-    font-size: 1rem;
+.exam-table__row:last-child {
+    border-bottom: none;
+}
+
+.exam-table__row--highlight {
+    background: rgba(255, 170, 92, 0.08);
+    border-left: 3px solid var(--color-accent-warm);
+}
+
+.exam-table__date {
+    font-family: var(--font-display);
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--color-text);
+    width: 90px;
+    flex-shrink: 0;
+}
+
+.exam-table__label {
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+}
+
+.exam-table__label--venue {
+    color: var(--color-accent-warm);
+    font-weight: 700;
 }
 
 .schedule__note {
