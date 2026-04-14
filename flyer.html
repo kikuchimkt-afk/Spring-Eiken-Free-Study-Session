@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英検対策 無料勉強会 フライヤー</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        @page { size: A4 portrait; margin: 0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            color: #222;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .flyer {
+            width: 210mm;
+            height: 297mm;
+            background: #fff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            padding: 10mm 14mm 8mm;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Corner accents */
+        .flyer::before, .flyer::after {
+            content: '';
+            position: absolute;
+            width: 30mm;
+            height: 30mm;
+            border: 2px solid #5b4cc4;
+        }
+        .flyer::before {
+            top: 5mm; left: 5mm;
+            border-right: none; border-bottom: none;
+        }
+        .flyer::after {
+            bottom: 5mm; right: 5mm;
+            border-left: none; border-top: none;
+        }
+
+        /* Header */
+        .header { text-align: center; margin-bottom: 3mm; }
+
+        .header__free {
+            display: inline-block;
+            border: 2px solid #5b4cc4;
+            color: #5b4cc4;
+            font-size: 10pt;
+            font-weight: 900;
+            padding: 1.5mm 6mm;
+            border-radius: 100px;
+            letter-spacing: 0.1em;
+            margin-bottom: 2mm;
+        }
+
+        .header__title {
+            font-size: 24pt;
+            font-weight: 900;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+        }
+
+        .header__title-accent { color: #5b4cc4; }
+
+        .header__subtitle {
+            font-size: 10pt;
+            color: #666;
+            margin-top: 1.5mm;
+        }
+        .header__subtitle strong { color: #222; font-weight: 900; }
+
+        /* Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 2mm;
+            margin: 2.5mm 0;
+        }
+        .divider__line { flex: 1; height: 1px; background: #ddd; }
+        .divider__icon { font-size: 10pt; }
+
+        /* Schedule */
+        .schedule-box {
+            border: 2px solid #222;
+            border-radius: 3px;
+            padding: 3mm 4mm;
+            margin-bottom: 3mm;
+        }
+
+        .schedule-box__grid {
+            display: grid;
+            grid-template-columns: 20mm 1fr;
+            gap: 1.5mm 3mm;
+            align-items: center;
+        }
+
+        .schedule-box__label {
+            font-size: 7.5pt;
+            font-weight: 700;
+            color: #666;
+        }
+
+        .schedule-box__value {
+            font-size: 9pt;
+            font-weight: 700;
+        }
+
+        .schedule-box__value--big {
+            font-size: 14pt;
+            font-weight: 900;
+            color: #5b4cc4;
+        }
+
+        .schedule-box__value--free {
+            display: inline-block;
+            border: 2px solid #5b4cc4;
+            color: #5b4cc4;
+            font-size: 9pt;
+            font-weight: 900;
+            padding: 0.5mm 3mm;
+            border-radius: 100px;
+        }
+
+        .schedule-box__value--capacity {
+            color: #e05580;
+            font-weight: 900;
+            font-size: 10pt;
+        }
+
+        /* Features */
+        .features { margin-bottom: 3mm; }
+
+        .features__title {
+            font-size: 10pt;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 2mm;
+        }
+
+        .features__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2mm;
+        }
+
+        .feature {
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            padding: 2.5mm;
+            text-align: center;
+        }
+        .feature--main { border: 2px solid #5b4cc4; }
+
+        .feature__icon { font-size: 14pt; margin-bottom: 0.5mm; }
+        .feature__name { font-size: 8pt; font-weight: 900; margin-bottom: 0.5mm; }
+        .feature__tag { font-size: 6.5pt; color: #5b4cc4; font-weight: 700; }
+        .feature__desc { font-size: 6.5pt; color: #666; line-height: 1.4; margin-top: 0.5mm; }
+
+        /* App + Advanced (combined row) */
+        .info-row {
+            display: flex;
+            gap: 2mm;
+            margin-bottom: 3mm;
+        }
+
+        .app-section {
+            flex: 1;
+            display: flex;
+            gap: 2mm;
+            align-items: center;
+            border: 1px dashed #ccc;
+            border-radius: 3px;
+            padding: 2mm 3mm;
+        }
+        .app-section__icon { font-size: 20pt; flex-shrink: 0; }
+        .app-section__content h3 { font-size: 8.5pt; font-weight: 900; margin-bottom: 0.5mm; }
+        .app-section__content p { font-size: 7pt; color: #666; line-height: 1.5; }
+
+        .advanced-note {
+            flex: 0 0 auto;
+            width: 55mm;
+            border: 1.5px solid #e05580;
+            border-radius: 3px;
+            padding: 2mm 3mm;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1mm;
+        }
+        .advanced-note__badge {
+            display: inline-block;
+            border: 1px solid #e05580;
+            color: #e05580;
+            font-size: 6pt;
+            font-weight: 900;
+            padding: 0.5mm 2mm;
+            border-radius: 100px;
+            align-self: flex-start;
+        }
+        .advanced-note__text { font-size: 7pt; line-height: 1.4; color: #555; }
+        .advanced-note__text strong { color: #e05580; }
+
+        /* Exam Schedule */
+        .exam-section { margin-bottom: 3mm; }
+
+        .exam-section__title {
+            font-size: 9pt;
+            font-weight: 900;
+            margin-bottom: 1.5mm;
+            text-align: center;
+        }
+
+        .exam-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1.5mm;
+            font-size: 7pt;
+        }
+
+        .exam-grid__item {
+            border: 1px solid #ddd;
+            padding: 1.5mm 1mm;
+            text-align: center;
+            border-radius: 2px;
+        }
+        .exam-grid__item--highlight {
+            border: 2px solid #5b4cc4;
+            font-weight: 700;
+            color: #5b4cc4;
+        }
+        .exam-grid__date { font-weight: 700; font-size: 7pt; }
+        .exam-grid__label { font-size: 5.5pt; color: #888; margin-top: 0.5mm; }
+        .exam-grid__item--highlight .exam-grid__label { color: #5b4cc4; }
+
+        /* Message */
+        .message {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 3mm 4mm;
+            border-left: 3px solid #5b4cc4;
+            margin: 3mm 0;
+        }
+
+        .message__catch {
+            font-size: 12pt;
+            font-weight: 900;
+            color: #5b4cc4;
+            margin-bottom: 2mm;
+            line-height: 1.5;
+        }
+
+        .message__body {
+            font-size: 7.5pt;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .message__body strong {
+            color: #222;
+        }
+
+        .message__signature {
+            font-size: 7pt;
+            color: #888;
+            text-align: right;
+            margin-top: 2mm;
+        }
+
+        /* Bottom */
+        .bottom {
+            display: flex;
+            gap: 4mm;
+            align-items: flex-end;
+            padding-top: 2mm;
+            border-top: 1px solid #eee;
+        }
+
+        .bottom__info { flex: 1; }
+
+        .bottom__venue { font-size: 8pt; margin-bottom: 1.5mm; }
+        .bottom__venue-name { font-size: 12pt; font-weight: 900; }
+
+        .bottom__target {
+            font-size: 7.5pt;
+            color: #555;
+            margin-bottom: 2mm;
+            line-height: 1.5;
+        }
+
+        .bottom__notes {
+            font-size: 6.5pt;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        /* QR */
+        .qr-section {
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .qr-box {
+            width: 28mm;
+            height: 28mm;
+            border: 2px solid #5b4cc4;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5mm;
+            overflow: hidden;
+        }
+
+        .qr-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .qr-label {
+            font-size: 7.5pt;
+            font-weight: 900;
+            color: #5b4cc4;
+        }
+
+        .qr-sublabel {
+            font-size: 6pt;
+            color: #888;
+            margin-top: 0.5mm;
+        }
+
+        .qr-url {
+            font-size: 4.5pt;
+            color: #aaa;
+            margin-top: 0.5mm;
+            word-break: break-all;
+        }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .flyer { box-shadow: none; width: 100%; height: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="flyer">
+
+        <!-- Header -->
+        <header class="header">
+            <div class="header__free">🎉 参加費 完全無料</div>
+            <h1 class="header__title">
+                <span class="header__title-accent">新感覚アプリ</span>で学ぶ！<br>
+                英検対策 <span class="header__title-accent">無料勉強会</span>
+            </h1>
+            <p class="header__subtitle">
+                5月末まで 毎週土曜 <strong>15:00 〜 17:00</strong>
+            </p>
+        </header>
+
+        <div class="divider">
+            <div class="divider__line"></div>
+            <span class="divider__icon">📋</span>
+            <div class="divider__line"></div>
+        </div>
+
+        <!-- Schedule -->
+        <div class="schedule-box">
+            <div class="schedule-box__grid">
+                <span class="schedule-box__label">📅 期間</span>
+                <span class="schedule-box__value">〜 2026年5月末まで</span>
+                <span class="schedule-box__label">🗓️ 曜日</span>
+                <span class="schedule-box__value">毎週 土曜日</span>
+                <span class="schedule-box__label">⏰ 時間</span>
+                <span class="schedule-box__value schedule-box__value--big">15:00 〜 17:00</span>
+                <span class="schedule-box__label">💰 費用</span>
+                <span class="schedule-box__value"><span class="schedule-box__value--free">完全無料</span></span>
+                <span class="schedule-box__label">👤 定員</span>
+                <span class="schedule-box__value"><span class="schedule-box__value--capacity">各回 6名</span>（少人数制）</span>
+                <span class="schedule-box__label">📱 持ち物</span>
+                <span class="schedule-box__value">スマートフォン or タブレット<br><span style="font-size:6.5pt;color:#888;font-weight:500">※ お持ちでない場合は教室でご用意します</span></span>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="features">
+            <div class="features__title">📚 勉強会で学べること</div>
+            <div class="features__grid">
+                <div class="feature feature--main">
+                    <div class="feature__icon">📖</div>
+                    <div class="feature__name">基礎語彙の習得</div>
+                    <div class="feature__tag">大問1 対策（メイン）</div>
+                    <div class="feature__desc">アプリで過去の出題単語を<br>効率的にマスター</div>
+                </div>
+                <div class="feature">
+                    <div class="feature__icon">💬</div>
+                    <div class="feature__name">会話文・読解</div>
+                    <div class="feature__tag">大問2・3 基礎</div>
+                    <div class="feature__desc">会話の流れ、短い文章の<br>読み方を丁寧に指導</div>
+                </div>
+                <div class="feature">
+                    <div class="feature__icon">🎧</div>
+                    <div class="feature__name">リスニング対策</div>
+                    <div class="feature__tag">聞き取りトレーニング</div>
+                    <div class="feature__desc">アプリ音声で繰り返し練習<br>聞き取りのコツも伝授</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- App + Advanced (side by side) -->
+        <div class="info-row">
+            <div class="app-section">
+                <div class="app-section__icon">📱</div>
+                <div class="app-section__content">
+                    <h3>独自開発の学習アプリを使用</h3>
+                    <p>ゲーム感覚で楽しく英検語彙・リスニングを強化。スマホ・タブレットがあればOK。アプリも完全無料です。</p>
+                </div>
+            </div>
+            <div class="advanced-note">
+                <span class="advanced-note__badge">STEP UP</span>
+                <p class="advanced-note__text">
+                    長文読解・英作文（3級〜準2級）は<strong>個別の集中講座</strong>をご用意。<br>※ 別途お申し込みが必要
+                </p>
+            </div>
+        </div>
+
+        <!-- Exam Schedule (1 row x 6) -->
+        <div class="exam-section">
+            <div class="exam-section__title">📄 2026年度 第1回 英検一次試験日程</div>
+            <div class="exam-grid">
+                <div class="exam-grid__item">
+                    <div class="exam-grid__date">5/22(金)</div>
+                    <div class="exam-grid__label">準会場A</div>
+                </div>
+                <div class="exam-grid__item">
+                    <div class="exam-grid__date">5/23(土)</div>
+                    <div class="exam-grid__label">準会場B</div>
+                </div>
+                <div class="exam-grid__item">
+                    <div class="exam-grid__date">5/24(日)</div>
+                    <div class="exam-grid__label">準会場C</div>
+                </div>
+                <div class="exam-grid__item">
+                    <div class="exam-grid__date">5/29(金)</div>
+                    <div class="exam-grid__label">準会場D</div>
+                </div>
+                <div class="exam-grid__item exam-grid__item--highlight">
+                    <div class="exam-grid__date">★5/30(土)</div>
+                    <div class="exam-grid__label">E日程(当校)</div>
+                </div>
+                <div class="exam-grid__item">
+                    <div class="exam-grid__date">5/31(日)</div>
+                    <div class="exam-grid__label">本会場/F</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Message / School's Purpose -->
+        <div class="message">
+            <p class="message__catch">
+                「英検、もっと楽しくなれる。」
+            </p>
+            <p class="message__body">
+                英検の勉強、ひとりでやっているとどうしても続かない…そんな声をたくさん耳にします。<br>
+                この勉強会では、<strong>当校が独自に開発した学習アプリ</strong>を使って、ゲーム感覚で英検の基礎力を鍵えます。<br>
+                <strong>「できた！」の積み重ね</strong>が自信になり、英語が好きになるきっかけに——。<br>
+                まずは気軽に、一歩を踏み出してみませんか？<br>
+                <strong>お友だちと一緒の参加も大歓迎です！</strong>
+            </p>
+            <p class="message__signature">ECCベストワン藍住校 スタッフ一同</p>
+        </div>
+
+        <!-- Bottom -->
+        <div class="bottom">
+            <div class="bottom__info">
+                <div class="bottom__venue">
+                    📍 会場<br>
+                    <span class="bottom__venue-name">ECCベストワン藍住校</span>
+                </div>
+                <p class="bottom__target">
+                    👥 対象：ECC藍住・北島中央の生徒さん＆お友だち<br>
+                    ※ 途中参加・途中退出OK！お気軽にご参加ください
+                </p>
+                <p class="bottom__notes">
+                    ※ 教材費・参加費は一切かかりません<br>
+                    ※ スマートフォンまたはタブレットをご持参ください<br>
+                    ※ 筆記用具もあると便利です
+                </p>
+            </div>
+            <div class="qr-section">
+                <div class="qr-box">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://spring-eiken-free-study-session.vercel.app/" alt="QRコード">
+                </div>
+                <div class="qr-label">📝 お申し込みはこちら</div>
+                <div class="qr-sublabel">スマホで読み取ってください</div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

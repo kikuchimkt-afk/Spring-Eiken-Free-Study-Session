@@ -811,6 +811,13 @@ a {
     color: var(--color-accent);
 }
 
+.schedule__note-inline {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-secondary);
+    opacity: 0.9;
+}
+
 /* Calendar - Full Grid */
 .schedule__calendar {
     text-align: center;
